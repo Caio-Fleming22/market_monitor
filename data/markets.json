@@ -1,0 +1,72 @@
+[
+  {
+    "name": "ETH/USDC",
+    "address": "",
+    "id": 1,
+    "expires": "2025-05-29T00:00:00.000Z",
+    "buy_target": 3300.0,
+    "sell_target": 3900.0,
+    "tolerance": 5.0,
+    "alert_interval_hours": 0.1
+  },
+  {
+    "name": "BTC/USDC",
+    "address": "",
+    "id": 1,
+    "expires": "2026-09-29T00:00:00.000Z",
+    "buy_target": 110000.0,
+    "sell_target": 135000.0,
+    "tolerance": 3.0,
+    "alert_interval_hours": 0.1
+  },
+  {
+    "name": "SOL/USDC",
+    "address": "",
+    "id": 1,
+    "expires": "2026-09-29T00:00:00.000Z",
+    "buy_target": 170,
+    "sell_target": 250,
+    "tolerance": 5.0,
+    "alert_interval_hours": 0.1
+  },
+  {
+    "name": "SUI/USDC",
+    "address": "",
+    "id": 1,
+    "expires": "2026-09-29T00:00:00.000Z",
+    "buy_target": 3.5,
+    "sell_target": 5,
+    "tolerance": 2.0,
+    "alert_interval_hours": 0.1
+  },
+  {
+    "name": "USDS (Expires in: 2025-08-14) Ethereum",
+    "address": "0xdace1121e10500e9e29d071f01593fd76b000f08",
+    "id": 1,
+    "expires": "2025-08-14T00:00:00.000Z",
+    "buy_target": 8.9,
+    "sell_target": 11.62,
+    "tolerance": 5.0,
+    "alert_interval_hours": 1.0
+  },
+  {
+    "name": "sUSDe (Expires in: 2025-09-25) Ethereum",
+    "address": "0xa36b60a14a1a5247912584768c6e53e1a269a9f7",
+    "id": 1,
+    "expires": "2025-09-25T00:00:00.000Z",
+    "buy_target": 10.0,
+    "sell_target": 12.0,
+    "tolerance": 2.0,
+    "alert_interval_hours": 1.0
+  },
+  {
+    "name": "kySOL-2508 (Expires in: 2025-08-30) Solana",
+    "address": -1,
+    "id": -1,
+    "expires": "2025-08-25T00:00:00.000Z",
+    "buy_target": 10.86,
+    "sell_target": 15.85,
+    "tolerance": 5.0,
+    "alert_interval_hours": 1.0
+  }
+]
