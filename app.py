@@ -10,7 +10,7 @@ from discord_alerts import send_alert
 from price_api import get_price
 import pandas as pd
 
-MARKETS_FILE = "data/markets.json"
+MARKETS_FILE = "markets.json"
 
 st.set_page_config(page_title="Market Monitor", layout="wide")
 st.title("📈 Monitoramento de Markets")
