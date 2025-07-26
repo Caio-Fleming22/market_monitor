@@ -12,7 +12,7 @@ import os
 load_dotenv()
 
  
-MARKETS_FILE = "data/markets.json"
+MARKETS_FILE = "markets.json"
 alerted = {}  # guarda timestamps: { "marketname_buy": last_alert_time, ... }
 
 def can_send_alert(alert_key, interval_hours):
