@@ -134,7 +134,7 @@ with st.form("add_market"):
         try:
             with open(MARKETS_FILE, "r+") as f:
                 data = json.load(f)
-                if any(m["address"] == address for m in data) & (any(m["address"] != "-1") or (any(m["address"] != "-2")) for m in data):
+                if any(m["address"] == address for m in data) & (any(m["address"] != "-2") for m in data):
                     st.warning("Este mercado já está cadastrado.")
                 else:
                     data.append({
