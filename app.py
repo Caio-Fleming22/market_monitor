@@ -134,23 +134,24 @@ with st.form("add_market"):
         try:
             with open(MARKETS_FILE, "r+") as f:
                 data = json.load(f)
-                if any(m["address"] == address for m in data) & (any(m["address"] != "-2") for m in data):
-                    st.warning("Este mercado já está cadastrado.")
-                else:
-                    data.append({
-                        "name": market_name,
-                        "address": address,
-                        "id": id,
-                        "expires": expires,
-                        "buy_target": buy_target,
-                        "sell_target": sell_target,
-                        "tolerance": tolerance,
-                        "alert_interval_hours": alert_interval
-                    })
-                    f.seek(0)
-                    f.truncate()
-                    json.dump(data, f, indent=2)
-                    st.success(f"{market_name} cadastrado com sucesso!")
+                
+                #if any(m["address"] == address for m in data) and any(m["address"] != '' for m in data):
+                #    st.warning("Este mercado já está cadastrado.")
+                #else:
+                data.append({
+                    "name": market_name,
+                    "address": address,
+                    "id": id,
+                    "expires": expires,
+                    "buy_target": buy_target,
+                    "sell_target": sell_target,
+                    "tolerance": tolerance,
+                    "alert_interval_hours": alert_interval
+                })
+                f.seek(0)
+                f.truncate()
+                json.dump(data, f, indent=2)
+                st.success(f"{market_name} cadastrado com sucesso!")
         except Exception as e:
             st.error(f"Erro ao salvar: {e}")
 
@@ -195,7 +196,7 @@ if st.sidebar.button("🗑️ Remover último mercado cadastrado"):
                 f.truncate()
                 json.dump(data, f, indent=2)
                 st.sidebar.success(f"Removido: {last_market['name']}")
-                st.experimental_rerun()  # 🔁 força recarregamento da app
+                st.rerun()  # 🔁 força recarregamento da app
             else:
                 st.sidebar.warning("Nenhum market para remover.")
     except Exception as e:

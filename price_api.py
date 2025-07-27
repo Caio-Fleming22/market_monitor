@@ -2,20 +2,9 @@ import requests,time
 import pandas as pd
 from scipy.signal import find_peaks
 
-# Dicionário de mapeamento dos nomes de mercados para os IDs corretos da CoinGecko
-symbol_map = {
-    "ETH/USDC": "ETH_USDC",
-    "BTC/USDC": "BTC_USDC",
-    "SUI/USDC": "SUI_USDC",
-    "SOL/USDC": "SOL_USDC",
-    "HYPE/USDC": "HYPE_USDC",
-    "ENA/USDC": "ENA_USDC"
-    # Adicione mais pares conforme necessário
-}
-
 def get_price(symbol):    
     try:
-        sym = symbol_map.get(symbol.upper())
+        sym = symbol
         now = int(time.time())
         start_time = now - (1 * 3600)
         url = "https://api.backpack.exchange/api/v1/klines"
@@ -247,7 +236,7 @@ def analisar_pullback_volume(df, pivot_index, tendencia, n=3, media_volume_windo
     
 def view_ema(symbol,tolerance):
     try:
-        sym = symbol_map.get(symbol.upper())
+        sym = symbol
         now = int(time.time())
         start_time = now - (900 * 3600)
         url = "https://api.backpack.exchange/api/v1/klines"
