@@ -96,7 +96,7 @@ elif pendle_len < selected_index <= rateX_len:
         implied_apy,trend_line,upper_line,lower_line,trend_line_extended, \
         upper_line_extended,lower_line_extended,dates, \
         extended_dates,expiry_date = getRatexTendency(name,500)
-        address = -1
+        address = "-1"
         id = -1
         # Converter para objeto datetime
         expires = expiry_date.strftime('%Y-%m-%dT%H:%M:%S.000Z')
@@ -109,7 +109,7 @@ else:
         lower_line = [0.0]
         upper_line = [0.0]
         expiry_date = "2026-12-30"
-        address = -1
+        address = "-2"
         id = -1
         # Converter para objeto datetime
         expiry_date_obj = datetime.strptime(expiry_date, "%Y-%m-%d")
@@ -134,7 +134,7 @@ with st.form("add_market"):
         try:
             with open(MARKETS_FILE, "r+") as f:
                 data = json.load(f)
-                if any(m["address"] == address for m in data) & any(m["address"] != -1 for m in data):
+                if any(m["address"] == address for m in data) & (any(m["address"] != "-1") or (any(m["address"] != "-2")) for m in data):
                     st.warning("Este mercado já está cadastrado.")
                 else:
                     data.append({
