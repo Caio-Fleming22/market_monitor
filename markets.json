@@ -30,7 +30,7 @@
     "alert_interval_hours": 0.1
   },
   {
-    "name": "ENA_USDC",
+    "name": "ENA_USDC_PERP",
     "address": "-2",
     "id": -1,
     "expires": "2026-12-30T00:00:00.000Z",
