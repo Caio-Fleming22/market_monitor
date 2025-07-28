@@ -7,7 +7,7 @@
     "buy_target": 3500.0,
     "sell_target": 4000.0,
     "tolerance": 1.0,
-    "alert_interval_hours": 1.0
+    "alert_interval_hours": 0.1
   },
   {
     "name": "BTC_USDC",
@@ -17,7 +17,7 @@
     "buy_target": 116800.0,
     "sell_target": 130000.0,
     "tolerance": 1.0,
-    "alert_interval_hours": 1.0
+    "alert_interval_hours": 0.1
   },
   {
     "name": "SOL_USDC",
@@ -27,7 +27,7 @@
     "buy_target": 179,
     "sell_target": 230,
     "tolerance": 5.0,
-    "alert_interval_hours": 1.0
+    "alert_interval_hours": 0.1
   },
   {
     "name": "SUI_USDC",
@@ -37,7 +37,7 @@
     "buy_target": 3.85,
     "sell_target": 5,
     "tolerance": 1.0,
-    "alert_interval_hours": 1.0
+    "alert_interval_hours": 0.1
   },
   {
     "name": "ENA_USDC",
@@ -50,7 +50,7 @@
     "alert_interval_hours": 0.1
   },
   {
-    "name": "HYPE_USDC",
+    "name": "HYPE_USDC_PERP",
     "address": "-2",
     "id": -1,
     "expires": "2026-12-30T00:00:00.000Z",
