@@ -37,6 +37,46 @@ def get_token_info(marketAdd,id):
     ytMult = float(jsonn.get("underlyingTokenToYtRate", 0))
     return(ytMult,ytRoi)
 
+def remove_market_by_name(market_name):
+    try:
+        with open(MARKETS_FILE, "r+") as f:
+            data = json.load(f)
+            data = [m for m in data if m["name"] != market_name]
+            f.seek(0)
+            f.truncate()
+            json.dump(data, f, indent=2)
+        print(f"✅ Mercado removido após atingir alvo: {market_name}")
+    except Exception as e:
+        print(f"Erro ao remover mercado: {e}")
+
+def remove_exact_market(target_market, target_type):
+    """
+    target_type: 'buy' ou 'sell'
+    """
+    try:
+        target_field = "buy_target" if target_type == "buy" else "sell_target"
+        target_value = target_market[target_field]
+
+        with open(MARKETS_FILE, "r+") as f:
+            data = json.load(f)
+            data = [
+                m for m in data
+                if not (
+                    m["name"] == target_market["name"] and
+                    m["address"] == target_market["address"] and
+                    m["id"] == target_market["id"] and
+                    m["expires"] == target_market["expires"] and
+                    m.get(target_field) == target_value
+                )
+            ]
+            f.seek(0)
+            f.truncate()
+            json.dump(data, f, indent=2)
+        print(f"✅ Mercado removido após atingir alvo: {target_market['name']} ({target_type})")
+    except Exception as e:
+        print(f"Erro ao remover mercado: {e}")
+
+
 def check_market(market):
     if "Expires" in market["name"]:
         print(market["name"])
@@ -118,13 +158,14 @@ def check_market(market):
                     apy_str = f"↪️ Actual Underlying APY =  {round(yield_rate,2)}"
 
                 send_alert(f"""
-🛒 Alvo de COMPRA atingido em {market['name']}: {current_price:.2f}%
-↪️ YT Protocol Multiplier = {round(ytMult,2)}
-{apy_str}
-{yt_roi_str}
-↪️ Days to expiry = {delta}""")
+                    🛒 Alvo de COMPRA atingido em {market['name']}: {current_price:.2f}%
+                    ↪️ YT Protocol Multiplier = {round(ytMult,2)}
+                    {apy_str}
+                    {yt_roi_str}
+                    ↪️ Days to expiry = {delta}""")
             else:
                 send_alert(f"🛒 Alvo de COMPRA atingido em {market['name']}: ${current_price}\n")
+            remove_exact_market(market, "buy")  # <-- remove após enviar alerta
 
     alert_key_sell = market["name"] + "_sell"
     if current_price >= market["sell_target"]:
@@ -142,13 +183,14 @@ def check_market(market):
                     apy_str = f"↪️ Actual Underlying APY =  {round(yield_rate,2)}"
 
                 send_alert(f"""
-👋 Alvo de VENDA atingido em {market['name']}: {current_price:.2f}%
-↪️ YT Protocol Multiplier = {round(ytMult,2)}
-{apy_str}
-{yt_roi_str}
-↪️ Days to expiry = {delta}""")
+                    👋 Alvo de VENDA atingido em {market['name']}: {current_price:.2f}%
+                    ↪️ YT Protocol Multiplier = {round(ytMult,2)}
+                    {apy_str}
+                    {yt_roi_str}
+                    ↪️ Days to expiry = {delta}""")
             else:
                 send_alert(f"👋 Alvo de VENDA atingido em {market['name']}: ${current_price}\n")
+            remove_exact_market(market, "sell") # <-- remove após enviar alerta
 
     # Verificando se há pelo menos 48 amostras
     if "Expires" in market["name"]:
@@ -187,3 +229,4 @@ def monitor_loop():
 
 def start_monitoring():
     threading.Thread(target=monitor_loop, daemon=True).start()
+

@@ -16,17 +16,7 @@
     "expires": "2026-09-29T00:00:00.000Z",
     "buy_target": 116800.0,
     "sell_target": 130000.0,
-    "tolerance": 1.0,
-    "alert_interval_hours": 0.1
-  },
-  {
-    "name": "SOL_USDC",
-    "address": "-2",
-    "id": 1,
-    "expires": "2026-09-29T00:00:00.000Z",
-    "buy_target": 179,
-    "sell_target": 230,
-    "tolerance": 5.0,
+    "tolerance": 0.3,
     "alert_interval_hours": 0.1
   },
   {
@@ -67,6 +57,46 @@
     "buy_target": 11.3,
     "sell_target": 13.85,
     "tolerance": 1.0,
-    "alert_interval_hours": 1.0
+    "alert_interval_hours": 0.1
+  },
+  {
+    "name": "slvlUSD (Expires in: 2025-09-25) Ethereum",
+    "address": "0xc88ff954d42d3e11d43b62523b3357847c29377c",
+    "id": 1,
+    "expires": "2025-09-25T00:00:00.000Z",
+    "buy_target": 7.5,
+    "sell_target": 10.5,
+    "tolerance": 1.01,
+    "alert_interval_hours": 0.1
+  },
+  {
+    "name": "tUSDe (Expires in: 2025-09-25) Ethereum",
+    "address": "0x07b1711d4af74af661dde3b774741993b79fc59c",
+    "id": 1,
+    "expires": "2025-09-25T00:00:00.000Z",
+    "buy_target": 12.1,
+    "sell_target": 16.0,
+    "tolerance": 1.01,
+    "alert_interval_hours": 0.1
+  },
+  {
+    "name": "sENA (Expires in: 2025-09-25) Ethereum",
+    "address": "0xda57abf95a7c21eb9df08fbaada182f749f6c62f",
+    "id": 1,
+    "expires": "2025-09-25T00:00:00.000Z",
+    "buy_target": 25.0,
+    "sell_target": 30.26,
+    "tolerance": 1.01,
+    "alert_interval_hours": 0.1
+  },
+  {
+    "name": "USDe (Expires in: 2025-09-25) Ethereum",
+    "address": "0x6d98a2b6cdbf44939362a3e99793339ba2016af4",
+    "id": 1,
+    "expires": "2025-09-25T00:00:00.000Z",
+    "buy_target": 13.4,
+    "sell_target": 16.0,
+    "tolerance": 1.01,
+    "alert_interval_hours": 0.1
   }
 ]

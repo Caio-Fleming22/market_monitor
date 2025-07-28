@@ -7,18 +7,21 @@ import pandas as pd
 import numpy as np
 
 def getUsualMarkets():
+    try:
+        # URL da API
+        url = "https://api.backpack.exchange/api/v1/tickers"
 
-    # URL da API
-    url = "https://api.backpack.exchange/api/v1/tickers"
+        # Requisição GET
+        response = requests.get(url)
+        if response.status_code != 200:
+            print(f"[AVISO] Erro na requisição: {response.status_code}")
+            return []  # Retorna lista vazia se falhar
 
-    # Requisição GET
-    response = requests.get(url)
-    if response.status_code != 200:
-        tickers_symbols = []
-        raise Exception(f"Erro na requisição: {response.status_code}")
-    else:
         tickers = response.json()
-        # Extrai a lista de symbols
+        # Extrai e ordena os symbols
         tickers_symbols = sorted([ticker["symbol"] for ticker in tickers])
+        return tickers_symbols
 
-    return tickers_symbols
+    except Exception as e:
+        print(f"[EXCEÇÃO] Falha ao obter mercados: {e}")
+        return []  # Retorna lista vazia em qualquer exceção

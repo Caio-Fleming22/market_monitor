@@ -186,6 +186,16 @@ start_monitoring()  # roda em background
 # Botão para remover o último mercado adicionado
 st.sidebar.markdown("---")
 st.sidebar.markdown("⚠️ <strong>Admin Tools</strong>", unsafe_allow_html=True)
+
+# ✅ Botão para download do markets.json
+with open(MARKETS_FILE, "rb") as f:
+    st.sidebar.download_button(
+        label="📥 Baixar Mercados Monitorados",
+        data=f,
+        file_name="markets.json",
+        mime="application/json"
+    )
+
 if st.sidebar.button("🗑️ Remover último mercado cadastrado"):
     try:
         with open(MARKETS_FILE, "r+") as f:
