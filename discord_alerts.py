@@ -7,22 +7,29 @@ def send_alert(message):
 
     # 📞 Configuração do WhatsApp CallMeBot
     NUMERO = os.getenv("NUMERO")
-    APIKEY = os.getenv("APIKEY")  
+    APIKEY = os.getenv("APIKEY")
 
-    # Discord Webhook URL (coloque essa variável no .env)
-    DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
+    # Discord Webhook URLs (coloque essas variáveis no .env)
+    DISCORD_WEBHOOK_URLS = [
+        os.getenv("DISCORD_WEBHOOK_URL_1"),
+        os.getenv("DISCORD_WEBHOOK_URL_2")
+    ]
 
-    # Discord - envio via webhook
-    try:
-        response = requests.post(DISCORD_WEBHOOK_URL, json={"content": message})
-        if response.status_code == 204:  # Webhook normalmente retorna 204 No Content
-            print("Mensagem enviada ao Discord com sucesso!")
+    # Envio para cada webhook do Discord
+    for webhook_url in DISCORD_WEBHOOK_URLS:
+        if webhook_url:  # Verifica se a URL existe
+            try:
+                response = requests.post(webhook_url, json={"content": message})
+                if response.status_code == 204:  # Webhook normalmente retorna 204 No Content
+                    print(f"Mensagem enviada ao Discord: {webhook_url}")
+                else:
+                    print(f"Erro ao enviar mensagem para Discord: {response.status_code} - {response.text}")
+            except Exception as e:
+                print(f"Erro ao enviar mensagem para Discord: {e}")
         else:
-            print(f"Erro ao enviar mensagem para Discord: {response.status_code} - {response.text}")
-    except Exception as e:
-        print(f"Erro ao enviar mensagem para Discord: {e}")
+            print("Webhook URL não encontrada no .env")
 
-    # Whatsapp
+    # Envio para WhatsApp
     url = f"https://api.callmebot.com/whatsapp.php?phone={NUMERO}&text={message}&apikey={APIKEY}"
     try:
         response = requests.get(url)
@@ -32,5 +39,3 @@ def send_alert(message):
             print(f"Erro ao enviar mensagem para WhatsApp: {response.status_code} - {response.text}")
     except Exception as e:
         print(f"Erro ao enviar mensagem para WhatsApp: {e}")
-
-
