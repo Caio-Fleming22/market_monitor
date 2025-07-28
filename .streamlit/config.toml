@@ -1,9 +1,10 @@
 [server]
 headless = true
 enableCORS = false
+
 [theme]
-primaryColor="#00BFFF"
-backgroundColor="#0D1117"
-secondaryBackgroundColor="#342b44"  # Isso afeta a cor da sidebar
-textColor="#E6EDF3"
-font="sans serif"
+primaryColor = "#00BFFF"
+backgroundColor = "#0D1117"
+secondaryBackgroundColor = "#342b44"  # Affects sidebar color
+textColor = "#E6EDF3"
+font = "sans serif"
