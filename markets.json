@@ -4,9 +4,9 @@
     "address": "-2",
     "id": 1,
     "expires": "2025-05-29T00:00:00.000Z",
-    "buy_target": 3300.0,
-    "sell_target": 3900.0,
-    "tolerance": 5.0,
+    "buy_target": 3500.0,
+    "sell_target": 4000.0,
+    "tolerance": 1.0,
     "alert_interval_hours": 1.0
   },
   {
@@ -14,9 +14,9 @@
     "address": "-2",
     "id": 1,
     "expires": "2026-09-29T00:00:00.000Z",
-    "buy_target": 110000.0,
-    "sell_target": 135000.0,
-    "tolerance": 3.0,
+    "buy_target": 116800.0,
+    "sell_target": 130000.0,
+    "tolerance": 1.0,
     "alert_interval_hours": 1.0
   },
   {
@@ -24,8 +24,8 @@
     "address": "-2",
     "id": 1,
     "expires": "2026-09-29T00:00:00.000Z",
-    "buy_target": 170,
-    "sell_target": 250,
+    "buy_target": 179,
+    "sell_target": 230,
     "tolerance": 5.0,
     "alert_interval_hours": 1.0
   },
@@ -34,29 +34,9 @@
     "address": "-2",
     "id": 1,
     "expires": "2026-09-29T00:00:00.000Z",
-    "buy_target": 3.5,
+    "buy_target": 3.85,
     "sell_target": 5,
-    "tolerance": 2.0,
-    "alert_interval_hours": 1.0
-  },
-  {
-    "name": "USDS (Expires in: 2025-08-14) Ethereum",
-    "address": "0xdace1121e10500e9e29d071f01593fd76b000f08",
-    "id": 1,
-    "expires": "2025-08-14T00:00:00.000Z",
-    "buy_target": 8.9,
-    "sell_target": 11.62,
-    "tolerance": 5.0,
-    "alert_interval_hours": 1.0
-  },
-  {
-    "name": "sUSDe (Expires in: 2025-09-25) Ethereum",
-    "address": "0xa36b60a14a1a5247912584768c6e53e1a269a9f7",
-    "id": 1,
-    "expires": "2025-09-25T00:00:00.000Z",
-    "buy_target": 10.0,
-    "sell_target": 12.0,
-    "tolerance": 2.0,
+    "tolerance": 1.0,
     "alert_interval_hours": 1.0
   },
   {
@@ -64,9 +44,29 @@
     "address": "-2",
     "id": -1,
     "expires": "2026-12-30T00:00:00.000Z",
-    "buy_target": 0.35,
+    "buy_target": 0.47,
     "sell_target": 0.75,
-    "tolerance": 2.0,
+    "tolerance": 1.0,
     "alert_interval_hours": 0.1
+  },
+  {
+    "name": "HYPE_USDC",
+    "address": "-2",
+    "id": -1,
+    "expires": "2026-12-30T00:00:00.000Z",
+    "buy_target": 41,
+    "sell_target": 50,
+    "tolerance": 1.0,
+    "alert_interval_hours": 0.1
+  },
+  {
+    "name": "sUSDe (Expires in: 2025-09-25) Ethereum",
+    "address": "0xa36b60a14a1a5247912584768c6e53e1a269a9f7",
+    "id": 1,
+    "expires": "2025-09-25T00:00:00.000Z",
+    "buy_target": 11.3,
+    "sell_target": 13.85,
+    "tolerance": 1.0,
+    "alert_interval_hours": 1.0
   }
 ]
