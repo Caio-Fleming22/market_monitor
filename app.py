@@ -15,8 +15,8 @@ MARKETS_FILE = "markets.json"
 st.set_page_config(page_title="Market Monitor", layout="wide")
 st.title("📈 Monitoramento de Markets")
 
-ids = [1, 56, 146, 5000, 8453, 42161, 80094, 10]
-nets = ["Ethereum", "BNB Chain", "Sonic Labs", "Mantle", "Base", "Arbitrum", "Berachain", "Optimism"]
+ids = [1, 56, 146, 5000, 8453, 42161, 80094, 10, 46]
+nets = ["Ethereum", "BNB Chain", "Sonic Labs", "Mantle", "Base", "Arbitrum", "Berachain", "Optimism", "HyperEVM"]
 
 all_markets_list = []
 

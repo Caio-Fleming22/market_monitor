@@ -43,7 +43,7 @@ def get_pendle_apy_data(address,expiry,time_scale,id):
     #from statsmodels.tsa.arima.model import ARIMA
     #from prophet import Prophet
     
-    #id's = 1 - ETH , 10 OP , 56 - BNB, 146 - SONIC LABS, 5000 - Mantle, 8453 - Base, 42161 - Arb, 80094 -BERA
+    #id's = 1 - ETH , 10 OP , 56 - BNB, 146 - SONIC LABS, 5000 - Mantle, 8453 - Base, 42161 - Arb, 80094 -BERA, 46 - Hype
     # Retorna todos os itens que correspondem ao nome
     def get_matches_by_name(df, name):
         return df[df['name'].str.lower() == name.lower()]
