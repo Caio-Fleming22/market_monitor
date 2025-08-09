@@ -1,15 +1,5 @@
 [
   {
-    "name": "ENA_USDC_PERP",
-    "address": "-2",
-    "id": -1,
-    "expires": "2026-12-30T00:00:00.000Z",
-    "buy_target": 0.45,
-    "sell_target": 0.75,
-    "tolerance": 0.5,
-    "alert_interval_hours": 1
-  },
-  {
     "name": "tUSDe (Expires in: 2025-09-25) Ethereum",
     "address": "0x07b1711d4af74af661dde3b774741993b79fc59c",
     "id": 1,

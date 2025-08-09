@@ -114,10 +114,10 @@ def check_market(market):
     tolerance = market["tolerance"] / 100
     status = "🔴"
     interval_hours = market.get("alert_interval_hours", 3)
-
+    print(f"Price: ${round(current_price, 6)}")
     time_now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     data1 = datetime.strptime(time_now, "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
-
+    
     alert_key_proximo = market["name"] + "_near_buy"
     if abs(current_price - market["buy_target"]) <= market["buy_target"] * tolerance:
         status = "🟡 Próximo do Alvo"
@@ -134,11 +134,11 @@ def check_market(market):
                     apy_str = f"↪️ Actual Underlying APY =  {round(yield_rate,2)}"
 
                 send_alert(f"""
-{market['name']}: ${current_price} Próximo do alvo de COMPRA: {market['buy_target']}%
-↪️ YT Protocol Multiplier = {round(ytMult,2)}
-{apy_str}
-{yt_roi_str}
-↪️ Days to expiry = {delta}""")
+                {market['name']}: ${current_price} Próximo do alvo de COMPRA: {market['buy_target']}%
+                ↪️ YT Protocol Multiplier = {round(ytMult,2)}
+                {apy_str}
+                {yt_roi_str}
+                ↪️ Days to expiry = {delta}""")
             else:
                 send_alert(f"{market['name']}: ${current_price} Próximo do alvo de COMPRA: ${market['buy_target']}\n")
 
@@ -166,6 +166,30 @@ def check_market(market):
             else:
                 send_alert(f"🛒 Alvo de COMPRA atingido em {market['name']}: ${current_price}\n")
             remove_exact_market(market, "buy")  # <-- remove após enviar alerta
+
+    alert_key_proximo_venda = market["name"] + "_near_sell"
+    if abs(current_price - market["sell_target"]) <= market["sell_target"] * tolerance:
+        status = "🟡 Próximo do Alvo de Venda"
+        if can_send_alert(alert_key_proximo_venda, interval_hours):
+            if "Expires" in market["name"]:
+                expiry_date_dt = datetime.combine(expiry_date, datetime.min.time())
+                data1_naive = data1.replace(tzinfo=None)
+                delta = expiry_date_dt - data1_naive
+                yt_roi_str = f"↪️ YT ROI for hold token up to expiry = {ytRoi * 100:.2f} %" if isinstance(ytRoi, float) else ""
+
+                if has_underlying_apy:
+                    apy_str = f"↪️ Actual Underlying APY =  {round(underlying_apy[-1], 2)}"
+                else:
+                    apy_str = f"↪️ Actual Underlying APY =  {round(yield_rate, 2)}"
+
+                send_alert(f"""
+                {market['name']}: ${current_price} Próximo do alvo de VENDA: {market['sell_target']}%
+                ↪️ YT Protocol Multiplier = {round(ytMult, 2)}
+                {apy_str}
+                {yt_roi_str}
+                ↪️ Days to expiry = {delta}""")
+            else:
+                send_alert(f"{market['name']}: ${current_price} Próximo do alvo de VENDA: ${market['sell_target']}\n")
 
     alert_key_sell = market["name"] + "_sell"
     if current_price >= market["sell_target"]:
